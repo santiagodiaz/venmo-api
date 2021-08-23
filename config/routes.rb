@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :users
   namespace :api do
     namespace :v1, defaults: { format: :json } do
       resources :user, only: [] do
