@@ -14,7 +14,7 @@
 #
 FactoryBot.define do
   factory :payment_account do
-    balance { 1.5 }
-    user { nil }
+    user
+    balance { Faker::Number.within(range: 0..999) }
   end
 end
