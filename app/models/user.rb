@@ -17,6 +17,11 @@ class User < ApplicationRecord
   has_many :received_payments, class_name: 'Payment', inverse_of: :receiver, dependent: :destroy,
                                foreign_key: :recipient_id
 
+  has_many :friendships_a, class_name: 'Friendship', inverse_of: :friend_a, dependent: :destroy,
+                           foreign_key: :friend_a_id
+  has_many :friendships_b, class_name: 'Friendship', inverse_of: :friend_b, dependent: :destroy,
+                           foreign_key: :friend_b_id
+
   has_one :payment_account, dependent: :destroy
 
   validates :username, uniqueness: true
