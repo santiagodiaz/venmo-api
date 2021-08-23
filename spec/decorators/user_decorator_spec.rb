@@ -1,8 +1,4 @@
-describe UserDecorator do
-  let(:user) { create(:user) }
-  let(:decorated_user) { user.decorate }
+require 'rails_helper'
 
-  it 'returns same email' do
-    expect(decorated_user.email).to eq(user.email)
-  end
+RSpec.describe UserDecorator do
 end
