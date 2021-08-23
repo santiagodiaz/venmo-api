@@ -26,4 +26,6 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
   validates :username, presence: true
+
+  delegate :balance, to: :payment_account, prefix: true
 end
