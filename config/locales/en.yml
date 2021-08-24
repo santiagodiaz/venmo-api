@@ -7,6 +7,7 @@ en:
       welcome: Welcome to your first admin
   api:
     errors:
+      friendship_exists: This users are already friends
       invalid_content_type: Invalid content type header
       missing_param: A required param is missing
       more_than_limit_amount: The amount must be less than 1000
