@@ -85,7 +85,79 @@ align="middle"/>
 
 # API Docs
 
+Available endpoints:
 
+###`POST /user/{id}/payment`
+
+Creates a payment from current user (from `{id}`) to send money to another user through `friend_id`
+
+Params:
+- friend_id (friend’s
+user_id, integer)
+- amount (payment amount, float)
+- description (payment
+description, string)
+
+Body example JSON format:
+```
+{
+    "friend_id": 1,
+    "amount": 10,
+    "description": "Beer"
+}
+```
+Response example:
+- Success: return 200 code with empty body.
+- Failure: return HTTP error code with error description.
+
+###`GET /user/{id}/feed`
+
+Shows a feed with all activities from current user (from `{id}`) and its friends up to second degree
+
+Params:
+- page (page_number
+  for pagination, integer. If no page number in the params, return first page by default. Each page contains at most 10 feed items.)
+
+body example JSON format:
+```
+{
+    "page": 1
+}
+```
+Response example:
+- Success: return 200 code, body contains a list of feed items.
+```
+{
+    "payments": [
+        "martinpalermo paid santidiaz on 2021-08-24 20:01:50 UTC - Beer",
+        "santidiaz paid martinpalermo on 2021-08-23 19:50:16 UTC - Pizza",
+        "martinpalermo paid romanriquelme on 2021-08-22 19:50:16 UTC - Enjoy your present!",
+        "martinpalermo paid leomessi on 2021-08-21 19:50:16 UTC - Shopping",
+        "romanriquelme paid carlosbianchi on 2021-08-17 19:50:16 UTC - Tickets"
+    ],
+    "current_page": 1,
+    "total_pages": 1
+}
+```
+- Failure: return HTTP error code with error description.
+
+
+
+###`GET /user/{id}/balance`
+
+Shows the balance of the payment account from current user (from `{id}`)
+
+Params:
+- No params
+
+Response example:
+- Success: return 200 code, body contains balance.
+```
+{
+    "balance": 300.0
+}
+```
+- Failure: return HTTP error code with error description.
 
 ## Code Owners
 
