@@ -14,5 +14,9 @@
 require 'rails_helper'
 
 RSpec.describe ExternalPaymentSource, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build :external_payment_source }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:user) }
+  end
 end

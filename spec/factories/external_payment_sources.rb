@@ -13,6 +13,6 @@
 #
 FactoryBot.define do
   factory :external_payment_source do
-    user { nil }
+    user
   end
 end

@@ -18,5 +18,14 @@
 require 'rails_helper'
 
 RSpec.describe Payment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build :payment }
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:amount) }
+  end
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:sender).class_name('User') }
+    it { is_expected.to belong_to(:recipient).class_name('User') }
+  end
 end

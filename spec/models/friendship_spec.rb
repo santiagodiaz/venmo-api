@@ -16,5 +16,10 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build :friendship }
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:friend_a).class_name('User') }
+    it { is_expected.to belong_to(:friend_b).class_name('User') }
+  end
 end

@@ -17,9 +17,9 @@
 #
 FactoryBot.define do
   factory :payment do
-    amount { 1.5 }
-    description { "MyText" }
-    recipient { nil }
-    sender { nil }
+    amount { 10.5 }
+    description { 'Pizzas' }
+    recipient factory: :user
+    sender factory: :user
   end
 end

@@ -46,5 +46,11 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       get :balance, params: { id: user.id }
       expect(response).to be_successful
     end
+
+    it 'returns a failure response when the user id does not exist' do
+      user.payment_account = payment_account
+      get :balance, params: { id: 100 }
+      expect(response).not_to be_successful
+    end
   end
 end
