@@ -83,6 +83,24 @@ alt="Venmo Model"
 width="750" height="500"
 align="middle"/>
 
+## Models
+
+- User: The user in the system.
+- Friendship: The relationship between two users as friends. A user can have one or more friends.
+- Payment: The activity saved when a friend makes a payment to another.
+- PaymentAccount: The account of the user that contains a balance value needed to make payments.
+- ExternalPaymentSource: The external account of the user that is used when the user does not have enough balance value in its payment account to make a payment. 
+
+## Services
+
+- PaymentService: Contains the logic to create a Payment between two users. It validates the amount to be more than 0 and less than 1000. It validates if the users are friends. And it validates if the balance of the user's payment account is enough or if it will need to use the external payment source. Finally creates the payment and updates the balance values of the friends. 
+
+- MoneyTransferService: Mocks an external payment source in order to add money to the user's balance if they do not have enough money to make a payment.
+
+- FriendshipService: Contains the logic to ask if a user is friend of another. It also has the logic to get all the friends from an user up to second degree.
+
+- FeedService: Contains the logic to find payments and list them on the feed for the current user and applies pagination, showing up to 10 items on each page.
+
 # API Docs
 
 Available endpoints:
