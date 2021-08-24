@@ -12,7 +12,7 @@ class FriendshipService
               .exists?
   end
 
-  def find_friends_second_degree(user)
+  def find_friends_second_degree
     friends_ids = find_friends_ids(user.id)
     friends_of_friends = find_friends_ids(friends_ids)
     (friends_ids + friends_of_friends).uniq

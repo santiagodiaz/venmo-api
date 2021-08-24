@@ -1,4 +1,6 @@
-describe PaymentService do
+require 'rails_helper'
+
+describe PaymentService, type: :service do
   let!(:user_a) { create(:user) }
   let!(:user_b) { create(:user) }
   let!(:friendship) do

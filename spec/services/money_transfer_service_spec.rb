@@ -1,4 +1,6 @@
-describe MoneyTransferService do
+require 'rails_helper'
+
+describe MoneyTransferService, type: :service do
   let!(:user) { create(:user) }
   let!(:payment_account) { create(:payment_account, user: user, balance: 100) }
   let!(:external_payment_source) { create(:external_payment_source, user: user) }

@@ -18,6 +18,6 @@ class FeedService
   private
 
   def find_friends_second_degree(user)
-    FriendshipService.new(user).find_friends_second_degree(user)
+    FriendshipService.new(user).find_friends_second_degree
   end
 end
