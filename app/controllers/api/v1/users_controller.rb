@@ -39,8 +39,9 @@ module Api
       end
 
       def page_number
-        if params[:page].present? && params[:page].positive?
-          params[:page]
+        page = params[:page]
+        if page.present? && page.positive?
+          page
         else
           1
         end

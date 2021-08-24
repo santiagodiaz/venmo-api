@@ -4,7 +4,8 @@ describe MoneyTransferService do
   let!(:external_payment_source) { create(:external_payment_source, user: user) }
 
   subject do
-    MoneyTransferService.new(external_payment_source, user.payment_account).transfer(amount - user.payment_account_balance)
+    MoneyTransferService.new(external_payment_source,
+                             user.payment_account).transfer(amount - user.payment_account_balance)
   end
 
   describe 'when the balance is not enough for the amount' do

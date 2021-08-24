@@ -22,7 +22,7 @@ class PaymentService
   end
 
   def validates_friendship
-    raise NotFriendsError unless FriendshipService.new(sender).friend_of?(recipient)
+    raise NotFriendsError unless FriendshipService.new(sender).friend_of?(recipient.id)
   end
 
   def balance_enough?

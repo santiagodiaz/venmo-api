@@ -23,7 +23,8 @@ detectors:
     allow_calls: []
   FeatureEnvy:
     enabled: true
-    exclude: []
+    exclude:
+      - Api::V1::UsersController
   InstanceVariableAssumption:
     enabled: false
   IrresponsibleModule:
