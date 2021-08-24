@@ -17,8 +17,13 @@ module Api
         head :ok
       end
 
+      # GET /user/{id}/feed
       def feed
-        # TODO
+        @feed = FeedService.new(@user, page_number).feed_activities
+        @payments = PaymentDecorator.decorate_collection(@feed)
+                                    .map(&:message)
+
+        render json: { payments: @payments, page: page_number }
       end
 
       private
@@ -31,6 +36,14 @@ module Api
       # Only allow a list of trusted parameters through.
       def user_params
         params.require(:user).permit(:username)
+      end
+
+      def page_number
+        if params[:page].present? && params[:page].positive?
+          params[:page]
+        else
+          1
+        end
       end
     end
   end

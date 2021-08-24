@@ -19,5 +19,8 @@ class Payment < ApplicationRecord
   belongs_to :recipient, class_name: 'User'
   belongs_to :sender, class_name: 'User'
 
+  delegate :username, to: :sender, prefix: true
+  delegate :username, to: :recipient, prefix: true
+
   validates :amount, presence: true
 end

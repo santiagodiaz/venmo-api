@@ -12,3 +12,5 @@ en:
       negative_or_zero_amount: The amount must be greater than zero
       not_found: Couldn't find the record
       not_friends: The users are not friends, they must be friends to send payments between each other
+    message:
+      payment: '%{sender} paid %{recipient} on %{timestamp} - %{description}'
