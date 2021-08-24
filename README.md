@@ -1,66 +1,32 @@
-# Rails API Template
+# Venmo API
 
-[![CircleCI](https://circleci.com/gh/rootstrap/rails_api_base.svg?style=svg)](https://circleci.com/gh/rootstrap/rails_api_base)
-[![Code Climate](https://codeclimate.com/github/rootstrap/rails_api_base/badges/gpa.svg)](https://codeclimate.com/github/rootstrap/rails_api_base)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/63de7f82c79f5fe82f46/test_coverage)](https://codeclimate.com/github/rootstrap/rails_api_base/test_coverage)
+Venmo is a mobile payment service which allows friends to transfer money to each other. It also has some social features like show your friends’ payment activities as feed.
 
-Rails Api Base is a boilerplate project for JSON RESTful APIs. It follows the community best practices in terms of standards, security and maintainability, integrating a variety of testing and code quality tools. It's based on Rails 6 and Ruby 2.7.
-
-Finally, it contains a plug an play Administration console (thanks to [ActiveAdmin](https://github.com/activeadmin/activeadmin)).
+This project contains unit tests, uses code analysis utilities and it is created with:
+* Ruby 2.7.2
+* Rails 6.0.3.5
 
 ## Features
 
-This template comes with:
-- Schema
-  - Users table
-  - Admin users table
-- Endpoints
-  - Sign up with user credentials
-  - Sign in with user credentials
-  - Sign out
-  - Reset password
-  - Get and update user profile
-- Administration panel for users
-- Rspec tests
-- Code quality tools
-- API documentation following https://apiblueprint.org/
-- Docker support
-- Exception Tracking
-- RSpec API Doc Generator
+The main features are: 
+- Balance
+  - You can get the balance value from the PaymentAccount that belongs to each User
+- Payments
+  - Users can send money between each other only if they are friends
+- Feed
+  - You can view a feed with all the activities from the current user and its friends up to second degree
 
 ## How to use
 
-1. Clone this repo
+1. Clone this repo 
 1. Install PostgreSQL in case you don't have it
-1. Run `bootstrap.sh` with the name of your your project like `./bootstrap.sh my_awesome_project`
+1. Create your `database.yml` and `application.yml` file
+1. `bundle install`
+1. `rake db:create`
+1. `rake db:migrate`
+1. `rake db:seed`
 1. `rspec` and make sure all tests pass
 1. `rails s`
-1. You can now try your REST services!
-
-## How to use with docker
-
-1. Have `docker` and `docker-compose` installed (You can check this by doing `docker -v` and `docker-compose -v`)
-1. Modify the following lines in the `database.yml` file:
-  ``` yaml
-  default: &default
-    adapter: postgresql
-    encoding: unicode
-    pool: 5
-    username: postgres
-    password: postgres
-    host: db
-    port: 5432
-  ```
-1. Generate a secret key for the app by running `docker-compose run --rm --entrypoint="" web rake secret`, copy it and add it in your environment variables.
-1. Update the default database configuration in the `config/database.yml` file to point to the `docker-compose` database:
-   1. Set `username: postgres`
-   1. Set `password: postgres`
-   1. Set `host: db`
-1. Run `docker-compose run --rm --entrypoint="" web rails db:create db:migrate`.
-   1. (Optional) Seed the database with an AdminUser for use with ActiveAdmin by running `docker-compose run --rm --entrypoint="" web rails db:seed`. The credentials for this user are: email: `admin@example.com` ; password: `password`.
-1. (Optional) If you want to deny access to the database from outside of the `docker-compose` network, remove the `ports` key in the `docker-compose.yml` from the `db` service.
-1. (Optional) Run the tests to make sure everything is working with: `docker-compose run --rm --entrypoint="" web rspec .`.
-1. Run the application with `docker-compose up`.
 1. You can now try your REST services!
 
 ## Gems
@@ -97,26 +63,8 @@ This template comes with:
 - [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers) adds other testing matchers
 - [Simplecov](https://github.com/colszowka/simplecov) for code coverage
 - [Webmock](https://github.com/bblimke/webmock) for stubbing http requests
+- [Will Paginate](https://github.com/mislav/will_paginate) for pagination
 - [YAAF](https://github.com/rootstrap/yaaf) for form objects
-
-## Optional configuration
-
-- Set your [frontend URL](https://github.com/cyu/rack-cors#origin) in `config/initializers/rack_cors.rb`
-- Set your mail sender in `config/initializers/devise.rb`
-- Config your timezone accordingly in `application.rb`.
-
-## Api Docs
-
-https://railsapibasers.docs.apiary.io/
-
-With [Rspec API Doc Generator](https://github.com/zipmark/rspec_api_documentation) you can generate the docs after writing the acceptance specs.
-
-Just run:
-
-`./bin/docs `
-
-An `apiary.apib` file will be generated at the root directory of the project.
-
 
 ## Code quality
 
@@ -128,10 +76,16 @@ With `bundle exec rails code:analysis` you can run the code analysis tool, you c
 - [Brakeman](https://github.com/presidentbeef/brakeman) Run `brakeman -I` to generate `config/brakeman.ignore`
 - [Bullet](https://github.com/flyerhzm/bullet#whitelist) You can add exceptions to a bullet initializer or in the controller
 
-## Configuring Code Climate
-1. After adding the project to CC, go to `Repo Settings`
-1. On the `Test Coverage` tab, copy the `Test Reporter ID`
-1. Set the current value of `CC_TEST_REPORTER_ID` in the [circle-ci project env variables](https://circleci.com/docs/2.0/env-vars/#setting-an-environment-variable-in-a-project)
+# ER Diagram
+
+<img src="venmo-api-er-diagram.png"
+alt="Venmo Model"
+width="750" height="500"
+align="middle"/>
+
+# API Docs
+
+
 
 ## Code Owners
 
