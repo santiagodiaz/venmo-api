@@ -22,6 +22,7 @@ RSpec.describe Payment, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:amount) }
+    it { is_expected.to validate_numericality_of(:amount).is_greater_than(0).is_less_than(1_000) }
   end
 
   describe 'associations' do

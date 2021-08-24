@@ -9,7 +9,7 @@ class PaymentService
   end
 
   def pay_to_friend
-    validates_amount_positive
+    validates_amount_limit
     validates_friendship
     use_external_payment_account unless balance_enough?
     start_transaction
@@ -17,8 +17,9 @@ class PaymentService
 
   private
 
-  def validates_amount_positive
+  def validates_amount_limit
     raise NegativeOrZeroAmountError if amount <= 0
+    raise MoreThanLimitAmountError if amount >= 1000
   end
 
   def validates_friendship

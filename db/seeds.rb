@@ -43,7 +43,7 @@ Payment.create!(sender: user2, receiver: user4, amount: 900, description: 'Shopp
                 created_at: 3.days.ago)
 Payment.create!(sender: user4, receiver: user7, amount: 300, description: 'Party',
                 created_at: 4.days.ago)
-Payment.create!(sender: user10, receiver: user4, amount: 1000, description: 'Happy Birthday!',
+Payment.create!(sender: user10, receiver: user4, amount: 999, description: 'Happy Birthday!',
                 created_at: 5.days.ago)
 Payment.create!(sender: user6, receiver: user7, amount: 40, description: 'Thanks for your help',
                 created_at: 6.days.ago)

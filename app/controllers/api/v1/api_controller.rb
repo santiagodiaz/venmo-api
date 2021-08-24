@@ -6,6 +6,7 @@ module Api
       rescue_from ActionController::ParameterMissing,  with: :render_parameter_missing
       rescue_from NotFriendsError,                     with: :render_request_invalid
       rescue_from NegativeOrZeroAmountError,           with: :render_request_invalid
+      rescue_from MoreThanLimitAmountError,            with: :render_request_invalid
 
       private
 

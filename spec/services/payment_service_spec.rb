@@ -61,6 +61,15 @@ describe PaymentService, type: :service do
       end
     end
 
+    describe 'when the amount is more or equal than 1000' do
+      let(:description) { 'Pizza' }
+      let(:amount) { 1000 }
+
+      it 'raises a negative amount error' do
+        expect { subject }.to raise_error(MoreThanLimitAmountError)
+      end
+    end
+
     describe 'when the user is not a friend' do
       let(:amount) { 100 }
       let(:params) { { friend_id: create(:user).id, amount: amount } }
