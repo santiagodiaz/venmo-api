@@ -80,7 +80,6 @@ With `bundle exec rails code:analysis` you can run the code analysis tool, you c
 
 <img src="venmo-api-er-diagram.png"
 alt="Venmo Model"
-width="750" height="500"
 align="middle"/>
 
 ## Models
@@ -178,11 +177,40 @@ Response example:
 
 ## Seed
 
-After running `rake db:seeds` the database will be populated with the following users and the friendship between them:
+- After running `rake db:seeds` the database will be populated with the following users and the friendship between them:
 
 <img src="seed-friendships.png"
 alt="Seed Friendships"
 align="middle"/>
+
+- The payments created are the following:
+```
+ id: 1, amount: 20.0, description: "Pizza", recipient: martinpalermo, sender: santidiaz,
+ id: 2, amount: 500.0, description: "Enjoy your present!", recipient: romanriquelme, sender: martinpalermo,
+ id: 3, amount: 900.0, description: "Shopping", recipient: leomessi, sender: martinpalermo,
+ id: 4, amount: 300.0, description: "Party", recipient: leoparedes, sender: leomessi,
+ id: 5, amount: 999.0, description: "Happy Birthday!", recipient: leomessi, sender: diegomaradona,
+ id: 6, amount: 40.0, description: "Thanks for your help", recipient: kunaguero, sender: dimaria,
+ id: 7, amount: 5.0, description: "Tickets", recipient: carlosbianchi, sender: romanriquelme,
+ id: 8, amount: 5.0, description: "Basket Jersey", recipient: mjordan, sender: manuginobili,
+ id: 9, amount: 10.0, description: "Beer", recipient: santidiaz, sender: martinpalermo
+```
+
+- Their balances:
+```
+ ["santidiaz", 7010.0],
+ ["martinpalermo", 6990.0],
+ ["romanriquelme", 20.0],
+ ["leomessi", 20.0],
+ ["kunaguero", 500.0],
+ ["dimaria", 0.0],
+ ["leoparedes", 500.0],
+ ["depaul", 10.0],
+ ["carlosbianchi", 120.0],
+ ["diegomaradona", 1000.0],
+ ["manuginobili", 1.0],
+ ["mjordan", 1.0]
+```
 
 ## Code Owners
 
