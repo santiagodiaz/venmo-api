@@ -105,7 +105,7 @@ align="middle"/>
 
 Available endpoints:
 
-###`POST /user/{id}/payment`
+`POST /user/{id}/payment`
 
 Creates a payment from current user (from `{id}`) to send money to another user through `friend_id`
 
@@ -128,7 +128,7 @@ Response example:
 - Success: return 200 code with empty body.
 - Failure: return HTTP error code with error description.
 
-###`GET /user/{id}/feed`
+`GET /user/{id}/feed`
 
 Shows a feed with all activities from current user (from `{id}`) and its friends up to second degree
 
@@ -160,8 +160,7 @@ Response example:
 - Failure: return HTTP error code with error description.
 
 
-
-###`GET /user/{id}/balance`
+`GET /user/{id}/balance`
 
 Shows the balance of the payment account from current user (from `{id}`)
 
@@ -176,6 +175,14 @@ Response example:
 }
 ```
 - Failure: return HTTP error code with error description.
+
+## Seed
+
+After running `rake db:seeds` the database will be populated with the following users and the friendship between them:
+
+<img src="seed-friendships.png"
+alt="Seed Friendships"
+align="middle"/>
 
 ## Code Owners
 
