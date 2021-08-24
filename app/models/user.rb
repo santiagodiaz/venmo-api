@@ -23,6 +23,7 @@ class User < ApplicationRecord
                            foreign_key: :friend_b_id
 
   has_one :payment_account, dependent: :destroy
+  has_one :external_payment_source, dependent: :destroy
 
   validates :username, uniqueness: true
   validates :username, presence: true

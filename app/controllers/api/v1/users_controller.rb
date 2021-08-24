@@ -10,8 +10,11 @@ module Api
         render json: { balance: @balance }
       end
 
+      # POST /user/{id}/payment
       def payment
-        # TODO
+        PaymentService.new(@user, params).pay_to_friend
+
+        head :ok
       end
 
       def feed
