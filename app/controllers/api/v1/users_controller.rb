@@ -19,11 +19,11 @@ module Api
 
       # GET /user/{id}/feed
       def feed
-        @feed = FeedService.new(@user, page_number).feed_activities
+        @total_pages, @feed = FeedService.new(@user, page_number).feed_activities
         @payments = PaymentDecorator.decorate_collection(@feed)
-                                    .map(&:message)
+                                    .map(&:title_and_description)
 
-        render json: { payments: @payments, page: page_number }
+        render json: { payments: @payments, current_page: page_number, total_pages: @total_pages }
       end
 
       private
