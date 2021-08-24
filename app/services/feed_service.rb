@@ -12,7 +12,7 @@ class FeedService
            .or(Payment.where(recipient: users_ids))
            .order(created_at: :desc)
            .page(page_number)
-           .per_page(2)
+           .per_page(10)
   end
 
   private

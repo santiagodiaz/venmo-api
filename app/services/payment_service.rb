@@ -31,7 +31,7 @@ class PaymentService
 
   def use_external_payment_account
     MoneyTransferService.new(sender.external_payment_source, sender.payment_account)
-                        .transfer(amount)
+                        .transfer(amount - sender.payment_account_balance)
   end
 
   def start_transaction
