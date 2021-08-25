@@ -35,9 +35,7 @@ RSpec.describe Friendship, type: :model do
 
       it 'returns an error message' do
         subject.valid?
-        expect(subject.errors[:friendship]).to include(
-                                                 I18n.t('api.errors.friendship_exists')
-                                               )
+        expect(subject.errors[:friendship]).to include(I18n.t('api.errors.friendship_exists'))
       end
     end
   end
